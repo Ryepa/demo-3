@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  }
+  body { @apply bg-cream-50 text-ink-900 font-sans antialiased; }
+  h1, h2, h3 { @apply font-display text-ink-900; letter-spacing: -0.01em; }
+  /* Visible, consistent focus ring for keyboard users */
+  :focus-visible { outline: 3px solid #C65A2E; outline-offset: 3px; border-radius: 6px; }
+  section[id] { scroll-margin-top: 5rem; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold transition-colors min-h-[48px];
+  }
+  .btn-primary { @apply btn bg-clay-600 text-white hover:bg-clay-700; }
+  .btn-ghost { @apply btn border border-ink-900/15 text-ink-900 hover:bg-cream-100; }
+  .eyebrow { @apply text-sm font-semibold uppercase tracking-[0.14em] text-clay-600; }
+  .section-title { @apply mt-2 text-3xl sm:text-4xl font-semibold leading-tight; }
+  .card { @apply rounded-2xl bg-white border border-ink-900/10 shadow-soft; }
+  .icon-tile { @apply flex h-12 w-12 items-center justify-center rounded-xl bg-clay-100 text-clay-700; }
+  .field-label { @apply block text-sm font-semibold text-ink-800 mb-1.5; }
+  .field {
+    @apply block w-full rounded-xl border border-ink-900/20 bg-white px-4 py-3 text-base text-ink-900 placeholder:text-ink-500/80
+      focus:border-clay-600 focus:outline-none focus:ring-4 focus:ring-clay-500/20;
+  }
+  .field[aria-invalid="true"] { @apply border-red-700 ring-4 ring-red-700/10; }
+  .field-error { @apply mt-1.5 text-sm font-medium text-red-800; }
+  .spinner {
+    @apply inline-block h-5 w-5 rounded-full border-2 border-white/40 border-t-white;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-chevron { transform: rotate(180deg); }
+}

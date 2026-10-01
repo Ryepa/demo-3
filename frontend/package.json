@@ -1,0 +1,12 @@
+{
+  "name": "fixit-pro-frontend",
+  "private": true,
+  "description": "Builds the Tailwind stylesheet for the Fixit Pro demo. Only needed if you change classes in static/.",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i input.css -o ../static/assets/styles.css --minify",
+    "watch:css": "tailwindcss -c tailwind.config.js -i input.css -o ../static/assets/styles.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
